@@ -1,28 +1,27 @@
 import { useEffect, useState } from 'react'
 import Seo from './components/Seo'
 
-const API_KEY = '5b2f4d0329c778a5838cfa5870be7d03'
-
 export default function Home() {
   const [movies, setMovies] = useState()
   useEffect(() => {
     ;(async () => {
-      const { results } = await (
-        await fetch(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-        )
-      ).json()
+      const { results } = await (await fetch(`/api/movies`)).json()
       setMovies(results)
     })()
   }, [])
 
   return (
-    <div>
+    <div className="container">
       <Seo title="Home" />
       {!movies && <h4>Loading...</h4>}
       {movies?.map(movie => (
         <div key={movie.id}>
+          <img
+            src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`}
+            alt={movie.title}
+          />
           <h4>{movie.title}</h4>
+          <p>{movie.overview}</p>
         </div>
       ))}
     </div>
