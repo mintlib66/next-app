@@ -9,7 +9,7 @@ const StyledNav = styled.nav`
   align-items: center;
   padding-top: 20px;
   padding-bottom: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 20px 40px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
   div {
@@ -27,7 +27,7 @@ const StyledNav = styled.nav`
     text-decoration: none;
   }
   a.active {
-    color: blue;
+    color: #006ee1;
   }
 `
 export default function NavBar() {
@@ -43,10 +43,9 @@ export default function NavBar() {
           href="/about"
           className={router.pathname === '/about' ? 'active' : ''}
         >
-          About
+          <span>About</span>
         </Link>
       </div>
-      {/* <style jsx>{style}</style> */}
     </StyledNav>
   )
 }
