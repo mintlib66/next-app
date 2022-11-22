@@ -32,9 +32,9 @@ export default function Home({ results }) {
       {results?.map(movie => (
         <Link
           key={movie.id}
-          as={`/movies/${movie.id}`}
+          as={`/movies/${movie.title}/${movie.id}`}
           href={{
-            pathname: `/movies/${movie.id}`,
+            pathname: `/movies/${movie.title}/${movie.id}`,
             query: {
               id: movie.id,
               title: movie.title,
