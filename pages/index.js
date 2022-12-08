@@ -24,6 +24,7 @@ const StyledContainer = styled.div`
   }
 `
 
+const FETCH_SITE = process.env.FETCH_SITE
 //results 서버사이드에서 받아옴
 export default function Home({ results }) {
   return (
@@ -57,9 +58,7 @@ export default function Home({ results }) {
 
 //서버사이드 렌더링(함수명 변경x) - 서버 사이드에서만 실행
 export async function getServerSideProps() {
-  const { results } = await (
-    await fetch(`http://localhost:3000/api/movies`)
-  ).json()
+  const { results } = await (await fetch(FETCH_SITE)).json()
   return {
     props: {
       results,
